@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
         >
           Learn React
         </a>
+        <button style={{margin:10}} onClick={function(){axios.get("http://localhost:3001/users").then(result=>{alert(result);});}}>Test</button>
       </header>
     </div>
   );
