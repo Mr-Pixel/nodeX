@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 
-import Utils from './pages/Utils';
+import Test from './pages/Test';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/Utils">Utils</Link>
+            <Link to="/Test">Test</Link>
           </li>
         </ul>
 
@@ -40,8 +40,8 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/Utils">
-            <Utils />
+          <Route path="/Test">
+            <Test />
           </Route>
         </Switch>
       </div>
