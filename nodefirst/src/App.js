@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import Test from './pages/Test';
+import JsonFormat from './pages/JsonFormat';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </li>
           <li>
             <Link to="/Test">Test</Link>
+          </li>
+          <li>
+            <Link to="/JsonFormat">JsonFormat</Link>
           </li>
         </ul>
 
@@ -43,6 +47,9 @@ function App() {
           <Route path="/Test">
             <Test />
           </Route>
+          <Route path="/JsonFormat">
+            <JsonFormat />
+          </Route>
         </Switch>
       </div>
     </Router>
@@ -61,14 +68,6 @@ function About() {
   return (
     <div>
       <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
     </div>
   );
 }
