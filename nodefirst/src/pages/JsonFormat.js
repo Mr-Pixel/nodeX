@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactJson from 'react-json-view';
 
-class Test extends React.Component {
+class JsonFormat extends React.Component {
   constructor(props) {
     super(props);
 
@@ -39,4 +39,4 @@ class Test extends React.Component {
     }
 }
 
-export default Test;
+export default JsonFormat;

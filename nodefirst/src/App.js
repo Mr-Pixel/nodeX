@@ -8,23 +8,24 @@ import {
 
 import Test from './pages/Test';
 import JsonFormat from './pages/JsonFormat';
+import ImageConvert from './pages/ImageConvert';
 
 function App() {
   return (
     <Router>
-      <div>
+      <div style={{flexDirection:"row"}}>
         <ul>
           <li>
             <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
           </li>
           <li>
             <Link to="/Test">Test</Link>
           </li>
           <li>
             <Link to="/JsonFormat">JsonFormat</Link>
+          </li>
+          <li>
+            <Link to="/ImageConvert">ImageConvert</Link>
           </li>
         </ul>
 
@@ -41,14 +42,14 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/about">
-            <About />
-          </Route>
           <Route path="/Test">
             <Test />
           </Route>
           <Route path="/JsonFormat">
             <JsonFormat />
+          </Route>
+          <Route path="/ImageConvert">
+            <ImageConvert />
           </Route>
         </Switch>
       </div>
@@ -60,14 +61,6 @@ function Home() {
   return (
     <div>
       <h2>Home</h2>
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
     </div>
   );
 }
