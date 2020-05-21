@@ -3,6 +3,7 @@ var router = express.Router();
 const fs = require("fs")
 const multer = require("multer");
 const child_process = require('child_process');
+const path = require('path')
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -14,14 +15,19 @@ var storage = multer.diskStorage({
 })
 var upload = multer({ storage: storage })//当前目录下建立文件夹uploads
 
-router.post('/', upload.array('img',1), function(req, res, next) {//这里的 "img" 字段要和前端 ForData.append 中的字段一致
-  console.log(req.body);
-  res.json({result:"success"});
-
-  convertImageByPython();
+router.post('/upload', upload.array('img',1), function(req, res, next) {//这里的 "img" 字段要和前端 ForData.append 中的字段一致
+  convertImageByPython(e=>{
+    res.json({result:"success"});
+  });
 });
 
-function convertImageByPython(){
+router.get('/editImg/*',(req,res,next)=>{
+  console.log(req.url);
+  let aPath = path.resolve(__dirname, '..', 'uploads', 'convertTemp', req.url.split('/')[2]);
+  res.sendfile(aPath);
+});
+
+function convertImageByPython(callback){
   var workerProcess = child_process.exec('python nodefirst/server/python/iconClip.py'+" "+"arg1", function (error, stdout, stderr) {
     if (error) {
         console.log(error.stack);
@@ -30,6 +36,7 @@ function convertImageByPython(){
     }
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
+    callback();
   });
 
   workerProcess.on('exit', function (code) {

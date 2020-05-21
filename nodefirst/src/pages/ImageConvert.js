@@ -6,7 +6,8 @@ class ImageConvert extends React.Component {
     super(props);
 
     this.state = {
-      imageSrc:null
+      imgSrc:null,
+      imgSrcResize:null
     };
 
   }
@@ -22,7 +23,8 @@ class ImageConvert extends React.Component {
               onChange={(e)=>{this.onfileChange(e)}}
               />
             <button style={{margin:40,marginTop:0,width:50}} onClick={e=>{this.clickConvert(e)}}>转换</button>
-            <img style={{width:400,height:400}} src={this.state.imageSrc} />
+            <img style={{width:400,height:400}} src={this.state.imgSrc} />
+            <img style={{width:400,height:400}} src={this.state.imgSrcResize} />
         </div>
         )
     }
@@ -34,7 +36,7 @@ class ImageConvert extends React.Component {
       var reader = new FileReader();
       reader.onload = function(){
         that.setState({
-          imageSrc:reader.result
+          imgSrc:reader.result
         });
       };
       reader.readAsDataURL(aImg);
@@ -48,8 +50,10 @@ class ImageConvert extends React.Component {
       let config = {
           headers:{'Content-Type':'multipart/form-data'}
       };  //添加请求头
-      axios.post('/api/upload',formdata1,config).then(response=>{   //这里的/xapi/upimage为接口
-          console.log(response.data);
+      axios.post('/api/image/upload',formdata1,config).then(response=>{   //这里的/xapi/upimage为接口
+          this.setState({
+            imgSrcResize:'/api/image/editImg/tmp_120.png',
+          })
       })
     }
 }

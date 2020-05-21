@@ -7,9 +7,9 @@ from PIL import Image
 def convertImg(agr1):
     print(agr1)
 
-    currentPath = os.path.abspath(os.path.dirname(__file__))
+    currentPath = os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", 'uploads', 'convertTemp'))
 
-    img = Image.open(currentPath+"/rocket_icon.png")
+    img = Image.open(currentPath+"/tempImg")
     x,y = img.size 
 
     # set white background
@@ -21,8 +21,7 @@ def convertImg(agr1):
     resizeList = [1024,180,120]
     for aSize in resizeList:
         aImg = wbImg.resize((aSize,aSize))
-        aImg.save(currentPath+"/"+"icon_"+str(aSize)+".png")
-        print(aImg)
+        aImg.save(currentPath+"/"+"tmp_"+str(aSize)+".png")
         pass
 
 convertImg(sys.argv[1])
