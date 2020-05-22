@@ -21,7 +21,7 @@ class Test extends React.Component {
 
   //functions
   fetchUsers(){
-    axios.get('/api/image/resizeImg',{})
+    axios.get('/users',{})
     .then(res=>{
       console.log(res);
     });
