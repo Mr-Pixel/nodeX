@@ -23,7 +23,9 @@ class Test extends React.Component {
   fetchUsers(){
     axios.get('/users',{})
     .then(res=>{
-      console.log(res);
+      this.setState({
+        title:res.data,
+      })
     });
   }
 
