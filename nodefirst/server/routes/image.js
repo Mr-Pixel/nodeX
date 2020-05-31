@@ -7,7 +7,9 @@ const path = require('path')
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'nodefirst/server/uploads/convertTemp/')
+    let dstPath = path.resolve(__dirname, '..')+'/uploads/convertTemp/';
+    console.log(dstPath);
+    cb(null, dstPath)
   },
   filename: function (req, file, cb) {
     cb(null, "tempImg")
@@ -16,7 +18,6 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })//当前目录下建立文件夹uploads
 
 router.post('/upload', upload.array('img',1), function(req, res, next) {//这里的 "img" 字段要和前端 ForData.append 中的字段一致
-  console.log('upload image success');
   convertImageByPython(e=>{
     res.json({result:"success"});
   });
