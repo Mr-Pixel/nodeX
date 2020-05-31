@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 
-const localHost = 'http://localhost:3002'
-
 class ImageConvert extends React.Component {
   constructor(props) {
     super(props);
@@ -54,7 +52,7 @@ class ImageConvert extends React.Component {
       };  //添加请求头
       axios.post('/api/image/upload',formdata1,config).then(response=>{   //这里的/xapi/upimage为接口
           this.setState({
-            imgSrcResize:localHost+'/api/image/editImg/tmp_120.png',
+            imgSrcResize:'/api/image/editImg/tmp_120.png',
           })
       })
     }
