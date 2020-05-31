@@ -50,7 +50,7 @@ class ImageConvert extends React.Component {
       let config = {
           headers:{'Content-Type':'multipart/form-data'}
       };  //添加请求头
-      axios.post('/api/image/upload',formdata1,config).then(response=>{   //这里的/xapi/upimage为接口
+      axios.post('/api/image/upload',formdata1,config).then(response=>{
           this.setState({
             imgSrcResize:'/api/image/editImg/tmp_120.png',
           })
