@@ -28,7 +28,7 @@ router.get('/editImg/*',(req,res,next)=>{
 });
 
 function convertImageByPython(callback){
-  var workerProcess = child_process.exec('python nodefirst/server/python/iconClip.py'+" "+"arg1", function (error, stdout, stderr) {
+  var workerProcess = child_process.exec('python3 nodefirst/server/python/iconClip.py'+" "+"arg1", function (error, stdout, stderr) {
     if (error) {
         console.log(error.stack);
         console.log('Error code: '+error.code);

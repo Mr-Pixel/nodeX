@@ -5,9 +5,9 @@ import os, sys
 from PIL import Image
 
 def convertImg(agr1):
-    print(agr1)
 
     currentPath = os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", 'uploads', 'convertTemp'))
+    print(currentPath)
 
     img = Image.open(currentPath+"/tempImg")
     x,y = img.size 
